@@ -1,7 +1,8 @@
-import { Home, Flame, Compass, ArrowUpRight, Plus, ChevronUp, Gamepad2, LayoutGrid, MessageSquare, Star, Info, Megaphone, Code, Sparkles, HelpCircle, FileText, Briefcase } from "lucide-react";
+import { Home, Flame, Compass, ArrowUpRight, Plus, ChevronUp, Gamepad2, LayoutGrid, Star, Info, Megaphone, Code, Sparkles, HelpCircle, FileText, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useSidebarContext } from "@/context/SidebarContext";
 
 const games = [
   { name: "Pocket Grids", subtitle: "Mini crosswords", players: "1.4M monthly players", icon: "🟪", isNew: true },
@@ -19,6 +20,7 @@ const communities = [
 ];
 
 const Sidebar = () => {
+  const { isOpen } = useSidebarContext();
   const [gamesOpen, setGamesOpen] = useState(true);
   const [customFeedsOpen, setCustomFeedsOpen] = useState(true);
   const [recentOpen, setRecentOpen] = useState(true);
@@ -26,8 +28,13 @@ const Sidebar = () => {
   const [resourcesOpen, setResourcesOpen] = useState(true);
 
   return (
-    <aside className="hidden lg:block w-64 shrink-0 h-[calc(100vh-48px)] overflow-y-auto scrollbar-thin">
-      <div className="py-3 px-2 space-y-1">
+    <aside 
+      className={cn(
+        "hidden lg:block shrink-0 h-[calc(100vh-48px)] overflow-y-auto scrollbar-thin transition-all duration-300 ease-in-out",
+        isOpen ? "w-64 opacity-100" : "w-0 opacity-0 overflow-hidden"
+      )}
+    >
+      <div className="py-3 px-2 space-y-1 w-64">
         {/* Main Navigation */}
         <nav className="space-y-0.5">
           <Button variant="ghost" className="w-full justify-start gap-3 h-10 font-normal text-foreground hover:bg-secondary">
