@@ -1,12 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
+import RightSidebar from "@/components/RightSidebar";
+import PostCard from "@/components/PostCard";
+import FeedFilter from "@/components/FeedFilter";
+import CreatePostBar from "@/components/CreatePostBar";
+import { posts } from "@/data/posts";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      <main className="max-w-[1400px] mx-auto px-4 py-4">
+        <div className="flex gap-6">
+          <Sidebar />
+          
+          {/* Main Feed */}
+          <div className="flex-1 min-w-0 max-w-2xl">
+            <CreatePostBar />
+            <FeedFilter />
+            
+            <div className="space-y-3">
+              {posts.map((post) => (
+                <PostCard key={post.id} {...post} />
+              ))}
+            </div>
+          </div>
+
+          <RightSidebar />
+        </div>
+      </main>
     </div>
   );
 };
