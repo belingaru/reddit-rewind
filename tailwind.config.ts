@@ -53,6 +53,7 @@ export default {
         upvote: "hsl(var(--upvote))",
         downvote: "hsl(var(--downvote))",
         online: "hsl(var(--online))",
+        join: "hsl(var(--join))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -66,8 +67,8 @@ export default {
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
       keyframes: {
         "accordion-down": {
@@ -80,13 +81,13 @@ export default {
         },
         "vote-bounce": {
           "0%, 100%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.2)" },
+          "50%": { transform: "scale(1.15)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "vote-bounce": "vote-bounce 0.2s ease-out",
+        "vote-bounce": "vote-bounce 0.15s ease-out",
       },
     },
   },
