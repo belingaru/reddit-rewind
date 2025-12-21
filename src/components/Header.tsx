@@ -1,12 +1,23 @@
 import { Search, Bell, MessageCircle, Plus, Menu, Video } from "lucide-react";
 import { Button } from "./ui/button";
+import { useSidebarContext } from "@/context/SidebarContext";
 
 const Header = () => {
+  const { toggle } = useSidebarContext();
+
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
       <div className="flex h-12 items-center justify-between px-4 gap-4">
         {/* Left section - Logo */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={toggle}
+            className="text-muted-foreground hover:text-foreground hover:bg-secondary"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
           <a href="/" className="flex items-center">
             <span className="text-xl font-bold text-primary">reddit</span>
           </a>
